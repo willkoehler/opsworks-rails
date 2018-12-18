@@ -32,6 +32,8 @@ def main
     run "git push origin #{PUBLISH_BRANCH} --force"
     # Switch back to master branch
     run "git checkout master"
+    # Clean stray / ignored files left behind from the package
+    run "git clean -xdf"
     puts "Cookbooks published successfully."
   end
 end
