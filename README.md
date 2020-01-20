@@ -12,7 +12,8 @@ Edited `Berksfile` to add dependencies and installed dependencies with
 
 # Package and Publish
 
-Package and publish to a cookbook branch that can be used on OpsWorks
+Package and publish to a cookbook branch that can be used on OpsWorks. This also
+updates dependencies (i.e. opsworks_ruby) to the latest versions.
 
     ./publish
 
