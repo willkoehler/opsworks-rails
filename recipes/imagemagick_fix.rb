@@ -3,9 +3,12 @@
 
 PolicyFile = "/etc/ImageMagick-6/policy.xml"
 UnauthorizedPolicy1 = '<policy domain="coder" rights="none" pattern="PDF" />'
-AuthorizedPolicy1 = '<policy domain="coder" rights="read" pattern="PDF" />'
+AuthorizedPolicy1 = '  <policy domain="coder" rights="read" pattern="PDF" />'
 UnauthorizedPolicy2 = '<policy domain="delegate" rights="none" pattern="HTTPS" />'
-AuthorizedPolicy2 = '<policy domain="delegate" rights="read" pattern="HTTPS" />'
+AuthorizedPolicy2 = '  <policy domain="delegate" rights="*" pattern="HTTPS" />'
+# '*' isn't documented anywhere, but makes things work
+# convert "https://ims-assets.s3.amazonaws.com/documents/8/wagon.jpg" test.jpg was returning a
+# "not authorized `HTTPS' @ error/delegate.c/InvokeDelegate/1717." error. With the '*' it works.
 
 ruby_block "Allow ImageMagick to read PDF files" do
   block do
