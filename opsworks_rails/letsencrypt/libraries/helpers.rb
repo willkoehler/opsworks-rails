@@ -23,4 +23,4 @@ module Helpers
   end
 end
 
-Chef::Recipe.send(:include, HelpersX)
+Chef::Recipe.send(:include, Helpers)
