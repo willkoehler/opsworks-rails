@@ -97,6 +97,13 @@ end
 # end
 on_worker_boot do
   <%= @out[:on_worker_boot] || 'puts "On worker boot..."' %>
+
+  <% if @out[:preload_app] %>
+    next unless defined?(ActiveRecord::Base) && defined?(Rails)
+    next unless Gem::Requirement.new('>= 4.1')
+                                .satisfied_by?(Gem::Version.new(Rails.version))
+    ActiveRecord::Base.establish_connection
+  <% end %>
 end
 
 # Code to run in a worker right before it exits.
@@ -120,7 +127,7 @@ end
 # end
 on_worker_fork do |worker_id|
   <%= @out[:on_worker_fork] || 'puts "Before worker #{worker_id} fork..."' %>
-end
+end if Gem.loaded_specs['puma'].version >= Gem::Version.new('3.4.0')
 
 # Code to run in the master after a worker has been started. The worker's
 # index is passed as an argument.
@@ -132,7 +139,7 @@ end
 # end
 after_worker_fork do |worker_id|
   <%= @out[:after_worker_fork] || 'puts "After worker #{worker_id} fork..."' %>
-end
+end if Gem.loaded_specs['puma'].version >= Gem::Version.new('3.4.0')
 
 # Change the default timeout of worker startup
 # The default is 60

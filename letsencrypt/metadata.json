@@ -1,0 +1,38 @@
+{
+  "name": "letsencrypt",
+  "description": "Monitor stuff on an OpsWorks instance",
+  "long_description": "",
+  "maintainer": "WillKoehler",
+  "maintainer_email": "wck555@gmail.com",
+  "license": "All Rights Reserved",
+  "platforms": {
+
+  },
+  "dependencies": {
+
+  },
+  "providing": {
+
+  },
+  "attributes": {
+
+  },
+  "recipes": {
+
+  },
+  "version": "1.0.0",
+  "source_url": "",
+  "issues_url": "",
+  "privacy": false,
+  "chef_versions": [
+    [
+      "~> 12"
+    ]
+  ],
+  "ohai_versions": [
+
+  ],
+  "gems": [
+
+  ]
+}
