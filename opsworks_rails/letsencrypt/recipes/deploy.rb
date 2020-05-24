@@ -1,4 +1,5 @@
 # Chef::Resource::User.send(:include, Helpers)
+include HelpersX
 
 # valid_domains_for("a", "b", "c.d")
 
