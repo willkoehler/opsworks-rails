@@ -2,7 +2,7 @@ Chef::Resource::User.send(:include, Helpers)
 
 every_enabled_application do |application|
   email = node[:lets_encrypt_notification_email]
-  domains = "-d " + application["domains"].join(" -d ")
+  domains = "-d " + valid_domains_for(application).join(" -d ")
 
   # Run certbot to setup TLS for the application
   execute "run certbot" do
