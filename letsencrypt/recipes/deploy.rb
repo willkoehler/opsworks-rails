@@ -3,7 +3,7 @@ every_enabled_application do |application|
   domains = "-d " + valid_domains_for(application).join(" -d ")
 
   # Run certbot to setup TLS for the application
-  execute "run certbot" do
+  execute "run certbot for #{domains}" do
     command "certbot --noninteractive --nginx --agree-tos --no-eff-email --redirect --keep-until-expiring -m #{email} #{domains}"
     user "root"
   end
