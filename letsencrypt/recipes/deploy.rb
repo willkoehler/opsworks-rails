@@ -2,25 +2,12 @@ every_enabled_application do |application|
   email = node[:lets_encrypt_notification_email]
   domains = "-d " + valid_domains_for(application).join(" -d ")
 
-  # # Sleep to allow opsworks_ruby::deploy to finish updating Nginx config. Super hacky, but don't see any other way
-  # # to wait for opsworks_ruby::deploy to finish. If we don't wait there's a race condition between the Nginx config
-  # # change made by our deploy and certbot
-  # chef_sleep "Wait for Nginx config to be updated..." do
-  #   seconds 5
-  # end
-
+  # Run certbot to setup TLS for the application.
+  # We log the full command in the execute comment vs using a Chef::Log.info because Chef::Log.info
+  # runs at time of parsing while the execute block is evaluated later, based on the runlist. The
+  # Chef::Log.info statement will appear in the log far ahead of when the command is actually executed.
   certbot_command = "certbot --noninteractive --nginx --agree-tos --no-eff-email --no-redirect --keep-until-expiring -m #{email} #{domains}"
-  Chef::Log.info("Running Certbot 1: #{certbot_command}")
-
-  ruby_block "log running certbot 2" do
-    block do
-      Chef::Log.info("Running Certbot 2: #{certbot_command}")
-    end
-    action :run
-  end
-
-  # Run certbot to setup TLS for the application
-  execute "run certbot" do
+  execute "Run Certbot: #{certbot_command}" do
     command certbot_command
     user "root"
   end
