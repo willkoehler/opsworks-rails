@@ -3,7 +3,7 @@ every_enabled_application do |application|
   domains = "-d " + valid_domains_for(application).join(" -d ")
 
   # Run certbot to setup TLS for the application
-  certbot_command = "certbot --noninteractive --nginx --agree-tos --no-eff-email --redirect --keep-until-expiring -m #{email} #{domains}"
+  certbot_command = "certbot --noninteractive --nginx --agree-tos --no-eff-email --no-redirect --keep-until-expiring -m #{email} #{domains}"
   Chef::Log.info("Running Certbot: #{certbot_command}")
 
   execute "run certbot" do
