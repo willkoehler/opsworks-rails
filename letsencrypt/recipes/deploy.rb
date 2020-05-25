@@ -9,16 +9,19 @@ every_enabled_application do |application|
   #   seconds 5
   # end
 
-  ruby_block "wait and then run certbot" do
+  certbot_command = "certbot --noninteractive --nginx --agree-tos --no-eff-email --no-redirect --keep-until-expiring -m #{email} #{domains}"
+  Chef::Log.info("Running Certbot 1: #{certbot_command}")
+
+  ruby_block "log running certbot 2" do
     block do
-      # Run certbot to setup TLS for the application
-      execute "run certbot" do
-        certbot_command = "certbot --noninteractive --nginx --agree-tos --no-eff-email --no-redirect --keep-until-expiring -m #{email} #{domains}"
-        Chef::Log.info("Running Certbot: #{certbot_command}")
-        command certbot_command
-        user "root"
-      end
+      Chef::Log.info("Running Certbot 2: #{certbot_command}")
     end
     action :run
+  end
+
+  # Run certbot to setup TLS for the application
+  execute "run certbot" do
+    command certbot_command
+    user "root"
   end
 end
