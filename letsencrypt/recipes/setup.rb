@@ -4,6 +4,7 @@ end
 
 package("certbot") { action :install }
 package("python3-certbot-nginx") { action :install }
+package("python3-certbot-dns-route53") { action :install }
 
 # Generate ~/.aws/config with AWS credentials if credentials are present in the config
 directory "/root/.aws" do
