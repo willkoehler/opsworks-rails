@@ -13,7 +13,6 @@
     "apt": "< 7.0",
     "ark": "= 4.0.0",
     "chef_client_updater": "~> 3.6.0",
-    "deploy_resource": ">= 0.0.0",
     "logrotate": "= 2.2.1",
     "nginx": "< 9.0",
     "nodejs": ">= 0.0.0",
@@ -49,7 +48,7 @@
   "recipes": {
 
   },
-  "version": "1.18.1",
+  "version": "1.19.0",
   "source_url": "https://github.com/ajgon/opsworks_ruby",
   "issues_url": "https://github.com/ajgon/opsworks_ruby/issues",
   "privacy": false,

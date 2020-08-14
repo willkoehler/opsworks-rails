@@ -1,8 +1,7 @@
 #
-# Cookbook:: mingw
-# Library:: _helper
-#
-# Copyright:: 2016-2019, Chef Software, Inc.
+# Author:: Daniel DeLeo (<dan@kallistec.com>)
+# Copyright:: Copyright 2009-2016, Daniel DeLeo
+# License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,22 +16,19 @@
 # limitations under the License.
 #
 
-module Mingw
-  module Helper
-    def win_friendly_path(path)
-      path.gsub(::File::SEPARATOR, ::File::ALT_SEPARATOR || '\\') if path
-    end
+class Chef
+  class Provider
+    class Deploy
+      class Timestamped < Chef::Provider::Deploy
+        provides :timestamped_deploy
+        provides :deploy
 
-    def archive_name(source)
-      url = ::URI.parse(source)
-      ::File.basename(::URI.unescape(url.path))
-    end
+        protected
 
-    def tar_name(source)
-      aname = archive_name(source)
-      ::File.basename(aname, ::File.extname(aname))
+        def release_slug
+          Time.now.utc.strftime('%Y%m%d%H%M%S')
+        end
+      end
     end
   end
 end
-
-Chef::Resource.include Mingw::Helper
