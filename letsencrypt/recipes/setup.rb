@@ -6,8 +6,8 @@ package("certbot") { action :install }
 package("python3-certbot-nginx") { action :install }
 package("python3-certbot-dns-route53") { action :install }
 
-template "/root/certbot_with_accept" do
-  source "certbot_with_accept.rb"
+template "/root/nonblocking_certbot" do
+  source "nonblocking_certbot.rb"
   mode "700"
   owner "root"
   group "root"
