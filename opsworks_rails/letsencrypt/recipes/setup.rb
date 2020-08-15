@@ -6,6 +6,13 @@ package("certbot") { action :install }
 package("python3-certbot-nginx") { action :install }
 package("python3-certbot-dns-route53") { action :install }
 
+template "/root/certbot_with_accept" do
+  source "certbot_with_accept.rb"
+  mode "700"
+  owner "root"
+  group "root"
+end
+
 # Generate ~/.aws/config with AWS credentials if credentials are present in the config
 directory "/root/.aws" do
   owner "root"
@@ -13,6 +20,7 @@ directory "/root/.aws" do
   only_if { node[:certbot_aws_access_key] }
 end
 
+# Generate ~/.aws/config with AWS credentials if credentials are present in the config
 template "/root/.aws/config" do
   source "config.erb"
   mode "400"
