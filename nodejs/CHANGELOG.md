@@ -1,19 +1,5 @@
 # NodeJS Cookbook Changelog
 
-## 7.0.1 (2020-06-04)
-
-- Minor readme fix
-
-## 7.0.0 (2020-06-04)
-
-- Require Chef Infra Client 14+ and remove the build-essential dependency
-- Updated the default to Node.js v10.16.3
-- Added compatibility with Chef Infra Client 16.2+
-- Removed Foodcritic testing
-- Updated ChefSpec and Kitchen platforms
-- Resolved multiple minor cookstyle issues in the cookbook
-- Added a vscode editor config
-
 ## 6.0.0 (2018-10-11)
 
 - Use the build_essential resource in the source install recipe instead of the build-essential::default recipe. This way we can use the new built-in build_essential resource in Chef 14+
