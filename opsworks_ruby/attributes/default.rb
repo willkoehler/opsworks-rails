@@ -46,6 +46,7 @@ default['defaults']['global']['logrotate_frequency'] = 'daily'
 default['defaults']['global']['logrotate_options'] = %w[
   missingok compress delaycompress notifempty copytruncate sharedscripts
 ]
+default['defaults']['global']['deploy_revision'] = false
 default['defaults']['global']['use_nodejs'] = false
 
 if node['use-nodejs']
@@ -77,7 +78,6 @@ default['defaults']['appserver']['dot_env'] = false
 default['defaults']['appserver']['preload_app'] = true
 default['defaults']['appserver']['timeout'] = 60
 default['defaults']['appserver']['worker_processes'] = 4
-default['defaults']['appserver']['after_deploy'] = 'stop-start' # (restart|clean-restart)
 
 ## puma
 

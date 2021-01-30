@@ -40,7 +40,7 @@ end
 
 def run(command)
   puts "--> #{command}"
-  system command
+  system command, exception: true
 end
 
 main

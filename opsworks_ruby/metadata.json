@@ -15,7 +15,7 @@
     "chef_client_updater": "~> 3.6.0",
     "logrotate": "= 2.2.1",
     "nginx": "< 9.0",
-    "nodejs": ">= 0.0.0",
+    "nodejs": "< 7.0",
     "ohai": "< 5.3",
     "ruby-ng": ">= 0.0.0",
     "s3_file": ">= 0.0.0",
@@ -48,7 +48,7 @@
   "recipes": {
 
   },
-  "version": "1.19.0",
+  "version": "1.20.0",
   "source_url": "https://github.com/ajgon/opsworks_ruby",
   "issues_url": "https://github.com/ajgon/opsworks_ruby/issues",
   "privacy": false,

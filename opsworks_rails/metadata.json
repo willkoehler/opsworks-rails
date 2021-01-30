@@ -14,9 +14,6 @@
   "providing": {
 
   },
-  "attributes": {
-
-  },
   "recipes": {
 
   },
@@ -34,5 +31,6 @@
   ],
   "gems": [
 
-  ]
+  ],
+  "eager_load_libraries": true
 }
