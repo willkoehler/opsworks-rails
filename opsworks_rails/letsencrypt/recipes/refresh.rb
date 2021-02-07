@@ -10,12 +10,11 @@ every_enabled_application do |application|
     certbot_command = "certbot --noninteractive --nginx --agree-tos --no-eff-email --no-redirect --keep-until-expiring -m #{email} #{domains}"
   end
 
-  # Run certbot to setup TLS for the application.
-  # We log the full command in the execute comment vs using a Chef::Log.info because Chef::Log.info
-  # runs at time of parsing while the execute block is evaluated later, based on the runlist. The
-  # Chef::Log.info statement will appear in the log far ahead of when the command is actually executed.
+  # Run certbot to setup TLS for the application after nginx config has been created/changed
   execute "Run Certbot: #{certbot_command}" do
     command certbot_command
     user "root"
+    action :nothing
+    subscribes :run, "template[/etc/nginx/sites-available/#{application['shortname']}.conf]", :delayed
   end
 end
