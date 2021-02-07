@@ -1,6 +1,7 @@
-# From https://github.com/puppeteer/puppeteer/issues/3443#issuecomment-433096772
 # These are packages needed on Ubuntu 18.04 for Puppeteer. Puppeteer will automatically
-# install the needed version of Chrome
+# install the needed version of Chromium.
+# From https://github.com/puppeteer/puppeteer/issues/3443#issuecomment-433096772
+# Also see https://github.com/actions/virtual-environments/issues/732#issuecomment-614809415
 package %w(
   libappindicator1
   libasound2
