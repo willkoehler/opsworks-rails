@@ -3,6 +3,7 @@
 # From https://github.com/puppeteer/puppeteer/issues/3443#issuecomment-433096772
 # Also see https://github.com/actions/virtual-environments/issues/732#issuecomment-614809415
 package %w(
+  fonts-noto-color-emoji
   libappindicator1
   libasound2
   libatk1.0-0
