@@ -9,5 +9,6 @@ cookbook "deploy_resource", "= 1.0.2" # lock to 1.0.2 for compatibility with che
 # local cookbooks
 cookbook "monitoring", path: "./monitoring"
 cookbook "letsencrypt", path: "./letsencrypt"
+cookbook "raygun", path: "./raygun"
 
 metadata
